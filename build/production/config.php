@@ -1,5 +1,6 @@
 <?php
 
 return [
-    "domain" => '{{domain}}'
+    "domain" => '{{domain}}',
+    "title" => '{{domain}}'
 ];
