@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="PHP-3" default="copy-files" basedir="./">
+<project name="PHP-3" default="copy-files" basedir="/">
     <target name="copy-files"></target>
 </project>
