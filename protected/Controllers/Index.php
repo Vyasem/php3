@@ -12,7 +12,7 @@ class Index extends Controller
         $configArray = $this->app->config->getData();
         $dbConfig = $configArray['db']->getData();
         $migration = new Migration($dbConfig);
-        var_dump($migration->select('test'));
+        $migration->up();
         $this->data['domain'] = $configArray['domain'];
         $this->data['title'] = 'Home page of '.$configArray['domain'];
     }

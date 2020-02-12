@@ -22,17 +22,13 @@ class Migration{
         }
     }
 
-    public function select($tableName, array $selectedFields = array("*"), array $params = array()){
-        $fieldsString = implode(',', $selectedFields);
-        $query = sprintf("SELECT %s FROM %s", $fieldsString, $tableName);
-        if(!empty($params)){
-
+    public function up(){
+        $query = file_get_contents($_SERVER['DOCUMENT_ROOT']."/migration/up_1.sql");
+        try{
+            $prepareQuery = $this->pdo->prepare($query);
+            $prepareQuery->execute();
+        }catch(\Exception $e){
+            echo $e->getMessage();
         }
-
-        $prepare = $this->pdo->prepare($query);
-
-        $prepare->execute();
-
-        return $prepare->fetchAll();
     }
 }
