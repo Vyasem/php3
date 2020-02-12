@@ -22,10 +22,12 @@ class Migration{
         }
     }
 
-    public function up(){
-        $query = file_get_contents($_SERVER['DOCUMENT_ROOT']."/migration/up_1.sql");
+    public function up($number = 1){
+        $query = file_get_contents("{$_SERVER['DOCUMENT_ROOT']}/migration/up_$number.sql");
+
         try{
             $prepareQuery = $this->pdo->prepare($query);
+            var_dump($prepareQuery);
             $prepareQuery->execute();
         }catch(\Exception $e){
             echo $e->getMessage();
