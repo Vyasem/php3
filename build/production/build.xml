@@ -23,6 +23,9 @@
             <filterchain>
                 <replacetokens begintoken="{{" endtoken="}}">
                     <token key="domain" value="test.loc" />
+                    <token key="user" value="${user}" />
+                    <token key="password" value="${password}" />
+                    <token key="dbname" value="${dbname}" />
                 </replacetokens>
             </filterchain>
         </copy>

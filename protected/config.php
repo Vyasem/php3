@@ -1,5 +1,5 @@
 <?php
 
 return [
-    "domain" => 'php31.loc'
+    "domain" => 'php31.loc',
 ];
