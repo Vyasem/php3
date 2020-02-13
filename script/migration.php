@@ -12,5 +12,8 @@ $config = $configArray->getData();
 $dbConfig = $config['db']->getData();
 
 $new = new Migration($dbConfig);
-$result = $new->up();
-echo $result;
+while($new->up()){
+    $new->up();
+}
+
+echo 'Successful!';

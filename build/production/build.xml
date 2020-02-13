@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="PHP-3" default="switch" basedir="./">
+<project name="PHP-3" default="migrate" basedir="./">
     <target name="vars">
         <php function="date" returnProperty="build.time">
             <param value="d-m-Y-H-i-s" />
@@ -37,5 +37,9 @@
 
     <target name="switch" depends="composer-install">
         <symlink target="${build.dir}" link="/domains/php31/public_html" overwrite="true"/>
+    </target>
+
+    <target name="migrate" depends="switch">
+        <exec command="php -f ${build.dir}/script/migration.php" passthru="true"/>
     </target>
 </project>
