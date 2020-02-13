@@ -3,3 +3,5 @@ CREATE TABLE role(
   role varchar(255) COLLATE 'utf8_general_ci' NOT NULL,
   FOREIGN KEY (usersid) REFERENCES users (id),
 );
+INSERT INTO users (id, name) VALUES (NULL, 'Админ');
+INSERT INTO users (id, name) VALUES (NULL, 'Пользователь');
