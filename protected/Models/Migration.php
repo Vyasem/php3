@@ -23,12 +23,17 @@ class Migration{
 
     public function up(){
         $itemMigration = "1";
-        if(!empty($this->getLastMigration)){
-            $itemMigration = ++$this->getLastMigration;
+        if(!empty($this->getLastMigration())){
+            $itemMigration = $this->getLastMigration();
+            ++$itemMigration;
+        }
+        $queryFile = __DIR__ . "/../../migration/up_$itemMigration.sql";
+        $result = $this->run($queryFile);
+        if($result){
+            $this->updateMigrationHistory($itemMigration);
         }
 
-        $queryFile = "{$_SERVER['DOCUMENT_ROOT']}/migration/up_$itemMigration.sql";
-        return $this->run($queryFile);
+        return $result;
 
     }
 
@@ -38,7 +43,7 @@ class Migration{
             $itemMigration = $this->getLastMigration;
         }
 
-        $queryFile = "{$_SERVER['DOCUMENT_ROOT']}/migration/down_$itemMigration.sql";
+        $queryFile =  __DIR__ . "/../../migration/down_$itemMigration.sql";
         return $this->run($queryFile);
     }
 
@@ -58,5 +63,11 @@ class Migration{
         $prepareQuery->execute();
         $result = $prepareQuery->fetch();
         return $result['last_migration'];
+    }
+
+    protected function updateMigrationHistory($migration){
+        $query = "INSERT INTO m_history (last_migration) VALUES ($migration)";
+        $prepareQuery = $this->pdo->prepare($query);
+        return $prepareQuery->execute();
     }
 }

@@ -6,8 +6,8 @@ return [
     "db" => [
         "driver" => "mysql",
         "host" => "localhost",
-        "user" => "devprog_cms",
-        "password" => "Mr43ije8J84J!",
+        "user" => "developer",
+        "password" => "developer",
         "dbname" => "php3"
     ]
 ];
