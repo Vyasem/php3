@@ -15,5 +15,6 @@ $new = new Migration($dbConfig);
 while($new->up()){
     $new->up();
 }
+$new->down(3);
 
-echo 'Successful!';
+echo "Successful! \n";
