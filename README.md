@@ -1,5 +1,18 @@
-# Minimal web-application based on T4 framework
-
-Use 
-<code>composer create-project pr-of-it/t4-app-mini --stability="dev"</code>
-to install this application
+# Миграции - управляем изменениями в БД
+<p>1. Входной скрипт для запуска миграций - ./script/migration.php. 
+<br>
+Класс миграции - ./protected/Models/Migration.php
+<br>
+Сами миграции - ./migration/
+</p>
+<p>
+2. Перед удалением таблицы с данными, будет выполнен метод prepareBackup(), для подготовки запроса для последующего восстановления информации.
+<br>
+Решение - анологично экспорту в phpMyadmin.
+    <br>а. Выполняем команду "SHOW CREATE TABLE dbname.tablename"
+    <br>б. Делаем выборку данных из таблицы
+    <br>в. Из полученных данных формируем INSERT
+    <br>г. Сохраняем полученные команды в файл
+<br>
+Это единственное что пришло мне в голову)))
+</p>
