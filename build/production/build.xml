@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="PHP-3" default="migrate" basedir="./">
+<project name="PHP-3" default="switch" basedir="./">
     <target name="vars">
         <php function="date" returnProperty="build.time">
             <param value="d-m-Y-H-i-s" />
         </php>
-        <property name="build.dir" value="/domains/php31/${build.time}"/>
+        <property name="build.dir" value="${basedir}/${build.time}"/>
     </target>
 
     <target name="copy-files" depends="vars">
@@ -23,6 +23,7 @@
             <filterchain>
                 <replacetokens begintoken="{{" endtoken="}}">
                     <token key="domain" value="test.loc" />
+                    <token key="host" value="${host}" />
                     <token key="user" value="${user}" />
                     <token key="password" value="${password}" />
                     <token key="dbname" value="${dbname}" />
@@ -36,7 +37,7 @@
     </target>
 
     <target name="switch" depends="composer-install">
-        <symlink target="${build.dir}" link="/domains/php31/public_html" overwrite="true"/>
+        <symlink target="${build.dir}" link="${basedir}/public_html" overwrite="true"/>
     </target>
 
     <target name="migrate" depends="switch">

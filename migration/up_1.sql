@@ -4,3 +4,4 @@ CREATE TABLE users(
   role varchar(255) COLLATE 'utf8_general_ci' NOT NULL DEFAULT ""
 );
 INSERT INTO users (id,name) VALUES (NULL, 'admin');
+

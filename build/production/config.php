@@ -5,7 +5,7 @@ return [
     "title" => "{{domain}}",
     "db" => [
         "driver" => "mysql",
-        "host" => "localhost",
+        "host" => "{{host}}",
         "user" => "{{user}}",
         "password" => "{{password}}",
         "dbname" => "{{dbname}}"
