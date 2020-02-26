@@ -6,5 +6,6 @@ services:
     - "80:80"
     volumes:
     - ./:/app
+    - ./docker/php/php.ini:/usr/local/etc/php/php.ini
     - ./docker/php/apache2.conf:/etc/apache2/apache2.conf
     - ./docker/php/000-default.conf:/etc/apache2/sites-enabled/000-default.conf

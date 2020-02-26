@@ -14,6 +14,7 @@
     "forum": "http://pr-of-it.ru/forum/"
   },
   "require": {
-    "pr-of-it/t4": "dev-master"
+    "pr-of-it/t4": "dev-master",
+    "phpunit/phpunit": "9.0.1"
   }
 }

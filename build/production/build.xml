@@ -42,5 +42,6 @@
 
     <target name="migrate" depends="switch">
         <exec command="php -f ${build.dir}/script/migration.php" passthru="true"/>
+        <exec command="${build.dir}/vendor/bin/phpunit  ${build.dir}/tests/" passthru="true"/>
     </target>
 </project>
