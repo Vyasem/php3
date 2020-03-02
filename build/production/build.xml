@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="PHP-3" default="switch" basedir="./">
+<project name="PHP-3" default="test" basedir="./">
     <target name="vars">
         <php function="date" returnProperty="build.time">
             <param value="d-m-Y-H-i-s" />
@@ -42,6 +42,10 @@
 
     <target name="migrate" depends="switch">
         <exec command="php -f ${build.dir}/script/migration.php" passthru="true"/>
+    </target>
+
+    <target name="test" depends="migrate">
         <exec command="${build.dir}/vendor/bin/phpunit  ${build.dir}/tests/" passthru="true"/>
+        <exec command="crontab  ${build.dir}/cron.txt" passthru="true"/>
     </target>
 </project>
